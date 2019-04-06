@@ -1,0 +1,49 @@
+<!-- <p>
+  chat works!
+</p> -->
+<div class="page">
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="heading-main">
+        Ng2Chat
+      </div>
+    </div>
+    <div class="panel-body" style="height: 600px; overflow-y: auto;" #list [scrollTop]="list.scrollHeight">
+      <div *ngFor="let comment of comments">
+        <div *ngIf="current_user.userId !== comment.user.userId" class="media">
+          <div class="media-left">
+            <a href="#" class="icon-rounded" [style.backgroundColor]="comment.user.userType == 'kirobo'? '#eb0a1e':'#5cb85c'">{{comment.user.initial}}</a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{comment.user.name}} ({{comment.user.userId}}) {{comment.message.timestamp | date: 'HH時mm分ss秒'}}</h4>
+            <div>{{comment.message.content}}</div>
+          </div>
+        </div>
+        <div *ngIf="current_user.userId === comment.user.userId" class="media">
+          <div class="media-body">
+            <h4 class="media-heading">{{comment.user.name}} ({{comment.user.userId}}) {{comment.message.timestamp | date: 'HH時mm分ss秒'}}</h4>
+            <div>{{comment.message.content}}</div>
+          </div>
+          <div class="media-right">
+            <a href="#" class="icon-rounded">{{comment.user.initial}}</a>
+          </div>
+        </div>
+
+        <hr>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="footer-form">
+        <div style="padding: 5px 5px 10px 5px;">
+          Reply to: <input type="text" class="input-text" [(ngModel)]="userId" placeholder="" size="40px">
+        </div>
+        <div class="input-group">
+          <textarea type="text" class="form-control" rows=3 [(ngModel)]="newComment" placeholder="Comment"></textarea>
+          <span class="input-group-btn" style="padding: 0px 0px 0px 10px;" >
+            <button class="btn btn-info" type="submit" (click)="sendComment(newComment);newComment=''">送信</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
