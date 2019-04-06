@@ -1,1 +1,1 @@
-# Example code of application using machine learning
+# Example codes of application using machine learning
