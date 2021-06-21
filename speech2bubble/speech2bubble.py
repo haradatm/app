@@ -196,7 +196,7 @@ def listen_print_loop(responses, stream):
         req = request.Request(ENDPOIT_URL, json.dumps(data).encode(), headers)
         with request.urlopen(req) as res:
             body = res.read()
-        # print(headers, data)
+        # print(body)
 
 
     for response in responses:
@@ -255,16 +255,21 @@ def listen_print_loop(responses, stream):
                     break
 
         else:
-            if VERBOSE:
-                sys.stdout.write(RED)
-                sys.stdout.write("\033[K")
-                sys.stdout.write(str(corrected_time) + ": " + transcript + "\r")
+            # if VERBOSE:
+            #     sys.stdout.write(RED)
+            #     sys.stdout.write("\033[K")
+            #     sys.stdout.write(str(corrected_time) + ": " + transcript + "\r")
 
             stream.last_transcript_was_final = False
 
 
 def main():
     """start bidirectional streaming from microphone input to speech API"""
+
+    global ACCESS_TOKEN
+    global ENDPOIT_URL
+    global USER_ID
+    global VERBOSE
 
     import argparse
     parser = argparse.ArgumentParser(description='')
@@ -298,7 +303,8 @@ def main():
     if VERBOSE:
         print(mic_manager.chunk_size)
         sys.stdout.write(YELLOW)
-        sys.stdout.write('\nListening, say "Quit" or "Exit" to stop.\n\n')
+        # sys.stdout.write('\nListening, say "Quit" or "Exit" to stop.\n\n')
+        sys.stdout.write('\nListening, type "Ctrl + C" to stop.\n\n')
         sys.stdout.write("End (ms)       Transcript Results/Status\n")
         sys.stdout.write("=====================================================\n")
 
