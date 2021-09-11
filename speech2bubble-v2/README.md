@@ -64,15 +64,9 @@ End (ms)       Transcript Results/Status
 
 - Viewer Application
 
-<br>
-
 ## (a) WebSocket Server
 
-<br>
-
 Please installation and launch on the Doctor's side.
-
-<br>
 
 ### Dependencies
 - Node.js v15.5+
@@ -89,8 +83,6 @@ In addition, please `npm init` and `npm install` the following packages in the p
 % npm install express ws moment --save
 ```
 
-<br>
-
 ### Usage
 ```
 % node app.js
@@ -98,27 +90,17 @@ In addition, please `npm init` and `npm install` the following packages in the p
 WebSocket server listening at http://localhost:6060
 ```
 
-<br>
-
 ## (b) Viewer Application
 
-<br>
-
 Please installation and launch on both the Doctor's and Patient's side.
-
-<br>
 
 ### Dependencies
 - MacOS v11 +
 
 
-<br>
-
 ### Install
 
 Please unzip `viewer_app/Conversation_Viewer.zip` and place it in your `Applications` folder.
-
-<br>
 
 ### Usege (Doctor's Side)
 
