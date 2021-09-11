@@ -110,7 +110,7 @@ Please unzip `viewer_app/Conversation_Viewer.zip` and place it in your `Applicat
 
 <br>
 
-## Usege (Doctor's Side)
+## Usege (Doctor's side)
 
 Click on the `Conversation_Viewer` application in your `Applications` folder to launch it.
 
@@ -120,7 +120,7 @@ When the application launch, select `Doctor` and input the following URL, then c
 ws://localhost:6060
 ```
 
-## Usege (Patient's Side)
+## Usege (Patient's side)
 
 Click on the `Conversation_Viewer` application in your `Applications` folder to launch it.
 
