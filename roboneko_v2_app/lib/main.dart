@@ -60,6 +60,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   double _maxAvailableZoom = 1.0;
   // double _currentScale = 1.0;
   // double _baseScale = 1.0;
+  bool veryHigh = false;
 
   // Counting pointers (number of user fingers on screen)
   int _pointers = 0;
@@ -515,13 +516,16 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         Expanded(
-            child: Text("ロボネコ キャプチャー v2 (動画と位置情報の同時収集)",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w900,
-                ))),
+            child: Container(
+                padding: EdgeInsets.all(12),
+                // margin: EdgeInsets.all(8),
+                child: Text("ロボネコ キャプチャー v2.1",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w900,
+                    )))),
 
         // IconButton(
         //   icon: const Icon(Icons.camera_alt),
@@ -532,6 +536,16 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
         //       ? onTakePictureButtonPressed
         //       : null,
         // ),
+
+        TextButton(
+          onPressed: cameraController != null &&
+                  cameraController.value.isInitialized &&
+                  !cameraController.value.isRecordingVideo
+              ? onResolutionModeButtonPressed
+              : null,
+          child: Text(veryHigh ? '1920p' : '1280p',
+              style: TextStyle(color: Colors.white)),
+        ),
         IconButton(
           icon: const Icon(Icons.videocam),
           color: Colors.white,
@@ -632,7 +646,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     }
     final CameraController cameraController = CameraController(
       cameraDescription,
-      ResolutionPreset.veryHigh,
+      veryHigh ? ResolutionPreset.veryHigh : ResolutionPreset.high,
       enableAudio: enableAudio,
       imageFormatGroup: ImageFormatGroup.jpeg,
     );
@@ -724,6 +738,13 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   //     onNewCameraSelected(controller!.description);
   //   }
   // }
+
+  void onResolutionModeButtonPressed() {
+    veryHigh = !veryHigh;
+    if (controller != null) {
+      onNewCameraSelected(controller!.description);
+    }
+  }
 
   // void onCaptureOrientationLockButtonPressed() async {
   //   if (controller != null) {
